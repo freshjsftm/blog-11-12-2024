@@ -7,6 +7,8 @@ import Modal from '../Modal/Modal';
 import LoginForm from '../forms/LoginForm';
 import { clearError, clearUser } from '../../store/userSlice';
 import Spinner from '../Spinner/Spinner';
+import { NavLink } from 'react-router-dom';
+import styles from './Header.module.scss';
 
 const Header = () => {
   const { user, error, isPending } = useSelector((state) => state.user);
@@ -25,20 +27,25 @@ const Header = () => {
     dispatch(clearUser());
   };
   return (
-    <header>
-      <div>
+    <header className={styles.header}>
+      <div className={styles['header-top']}>
         {isPending ? (
           <Spinner />
         ) : user ? (
           <p>
-            Welcome, {user.username}
+            <span> Welcome, {user.username} </span>
             <Icon size={1} path={mdiLogoutVariant} onClick={logoutUser} />
           </p>
         ) : (
           <Icon size={1} path={mdiLoginVariant} onClick={handleLogin} />
         )}
       </div>
-      <Menu />
+      <div className={styles['header-bottom']}>
+        <NavLink className={styles.logo} to='/'>Logo</NavLink>
+        <Menu />
+        <input type="text" placeholder="search" />
+      </div>
+
       {isShowModal && (
         <Modal closeModal={closeModal}>
           <LoginForm closeModal={closeModal} />
