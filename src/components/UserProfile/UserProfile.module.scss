@@ -1,0 +1,9 @@
+@use '/src/common/styles/templates' as *;
+
+.wrapper {
+  @extend %limit-width;
+}
+
+.user-info {
+  display: flex;
+}
