@@ -4,7 +4,7 @@ import styles from './pages.module.scss';
 const HomePage = () => {
   return (
     <div className={styles.wrapper}>
-      <h1>home page</h1>
+      <h2>List of authors</h2>
       <UsersList />
     </div>
   );

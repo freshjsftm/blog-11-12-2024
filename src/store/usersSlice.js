@@ -5,7 +5,7 @@ export const getAllUsersAsync = createAsyncThunk(
   'users/getAllUsersAsync',
   async (args, thunkAPI) => {
     try {
-      const response = await getAllUsers();
+      const response = await getAllUsers(args);
       return response.data.users;
     } catch (error) {
       return thunkAPI.rejectWithValue(error?.message || 'Users not exists');
