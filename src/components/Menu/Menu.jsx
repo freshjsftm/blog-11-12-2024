@@ -15,6 +15,14 @@ const Menu = () => {
         </li>
         <li>
           <NavLink
+            to="/posts"
+            className={({ isActive }) => (isActive ? styles.active : undefined)}
+          >
+            Blog
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
             to="/users"
             className={({ isActive }) => (isActive ? styles.active : undefined)}
           >

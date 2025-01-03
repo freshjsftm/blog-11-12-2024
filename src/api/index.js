@@ -5,6 +5,7 @@ const httpClient = axios.create({
   baseURL: 'https://dummyjson.com/',
 });
 
+//users
 export const loginUser = (dataUser) => httpClient.post('/auth/login', dataUser);
 
 //username: emilys
@@ -18,3 +19,11 @@ export const getAllUsers = (options) => {
 };
 
 export const getOneUser = (id) => httpClient.get(`/users/${id}`);
+
+
+// posts
+export const getAllPosts = (options) => {
+  const query = queryString.stringify(options);
+  return httpClient.get(`/posts?${query}`);
+};
+export const getOnePost = (id) => httpClient.get(`/posts/${id}`);

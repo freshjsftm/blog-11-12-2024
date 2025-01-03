@@ -4,6 +4,7 @@ import NotFoundPage from './pages/NotFoundPage';
 import Header from './components/Header/Header';
 import UsersPage from './pages/UsersPage';
 import UserProfile from './components/UserProfile/UserProfile';
+import BlogPage from './pages/BlogPage';
 
 function App() {
   return (
@@ -13,6 +14,8 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/users" element={<UsersPage />} />
         <Route path="/users/:userId" element={<UserProfile />} />
+
+        <Route path="/posts" element={<BlogPage />} />
 
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
