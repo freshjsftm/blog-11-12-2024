@@ -5,13 +5,15 @@ import Spinner from '../Spinner/Spinner';
 import { getAllPostsAsync } from '../../store/postsSlice';
 import PostCard from './PostCard';
 
-const PostsList = () => {
+const PostsList = (props) => {
+  const {withPic, limit, skip=0} = props;
+   
   const dispatch = useDispatch();
   const { posts, error, isPending } = useSelector((state) => state.posts);
   useEffect(() => {
-    dispatch(getAllPostsAsync());
-  }, [dispatch]);
-  const showPost = (post) => <PostCard key={post.id} post={post} />;
+    dispatch(getAllPostsAsync({limit, skip}));
+  }, [dispatch, limit, skip]);
+  const showPost = (post) => <PostCard key={post.id} post={post} withPic={withPic}/>;
   if (error) {
     return <p>{error}</p>;
   }
@@ -25,6 +27,8 @@ const PostsList = () => {
   );
 };
 
-PostsList.propTypes = {};
+PostsList.propTypes = {
+  withPic: PropTypes.bool
+};
 
 export default PostsList;
