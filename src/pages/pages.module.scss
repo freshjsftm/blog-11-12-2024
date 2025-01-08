@@ -1,14 +1,29 @@
 @use '/src/common/styles/templates' as *;
 
-.wrapper{
+.relative {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  @extend %flex-center;
+}
+
+.wrapper {
   @extend %limit-width;
-  h1, h2, h3{
+  h1,
+  h2,
+  h3 {
     text-align: center;
   }
-  .section-header{
+  .section-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 0.5rem;
+  }
+}
+.all-posts {
+  display: flex;
+  .featured-post {
+    width: 85%;
   }
 }
