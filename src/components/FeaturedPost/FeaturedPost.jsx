@@ -26,7 +26,7 @@ const FeaturedPost = (props) => {
   return (
     <>
       {imgPosition === 'under' && <div className={styles['full-screen']}><img src={'/images/1600x1200.png'} /></div>}
-      <article className={styles['featured-blog']}>
+      <article className={styles['featured-post']}>
         <div>
           {imgPosition === 'over' && <img src={'/images/600x400.png'} />}
           <h2>{featuredPost.title}</h2>

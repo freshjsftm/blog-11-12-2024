@@ -1,17 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const PostPage = () => {
+
+const PostDetails = () => {
   return (
     <div>
-      <PostDetails />
+      
     </div>
   );
 };
 
-PostPage.propTypes = {
+
+PostDetails.propTypes = {
 
 };
 
 
-export default PostPage;
+export default PostDetails;
