@@ -11,8 +11,7 @@
 .wrapper {
   @extend %limit-width;
   h1,
-  h2,
-  h3 {
+  h2 {
     text-align: center;
   }
   .section-header {
@@ -24,17 +23,25 @@
 }
 .section-posts {
   display: flex;
+  margin-top: 4rem;
+
   .featured-post {
     width: 85%;
-  }
-  .all-post{
-    
-    h2{
-      font-size: 1rem;
-      margin-top: 0.5em;
+    > h2 {
+      text-align: left;
+      padding: 0 0.5rem;
     }
-    p{
+    p {
+      width: 80%;
+    }
+  }
+  .all-post {
+    h3 {
+      margin: 0;
+    }
+    p {
       font-size: 0.8rem;
+      padding-right: 30px;
     }
   }
 }

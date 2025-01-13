@@ -48,7 +48,7 @@ const PostCard = (props) => {
             </Link>
           </p>
         )}
-        <h2 className={styles['post-card_title']}>{post.title}</h2>
+        <h3 className={styles['post-card_title']}>{post.title}</h3>
         {withPic && <p>{post.body.slice(0, 80)}...</p>}
       </div>
     </article>
