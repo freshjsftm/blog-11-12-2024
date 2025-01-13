@@ -27,3 +27,6 @@ export const getAllPosts = (options) => {
   return httpClient.get(`/posts?${query}`);
 };
 export const getOnePost = (id) => httpClient.get(`/posts/${id}`);
+
+//comments by one post
+export const getAllCommentsByPost = (id) => httpClient.get(`/comments/post/${id}`);
