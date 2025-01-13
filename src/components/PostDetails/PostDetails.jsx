@@ -9,6 +9,7 @@ import {
 } from '../../store/postsSlice';
 import CommentsList from '../CommentsList/CommentsList';
 import { getOneUser } from '../../api';
+import styles from './PostDetails.module.scss';
 
 const PostDetails = () => {
   const dispatch = useDispatch();
@@ -52,12 +53,14 @@ const PostDetails = () => {
     return <p>not post</p>;
   }
   return (
-    <article>
-      <div>
-        <div>
-          <img src={avatar} />
+    <article className={styles.post}>
+      <div className={styles['flex-row']}>
+        <div className={styles['flex-row']}>
+          <img className={styles.avatar} src={avatar} />
           <div>
-            <p>{author}</p>
+            <p>
+              {author} ({selectedPost.userId})
+            </p>
             <p>views: {selectedPost.views}</p>
           </div>
         </div>
@@ -71,7 +74,7 @@ const PostDetails = () => {
 
       <h1>{selectedPost.title}</h1>
       <picture>
-        <img src='/images/1600x1200.png' />
+        <img className={styles['post-img']} src="/images/1600x1200.png" />
       </picture>
       <p>{selectedPost.body}</p>
       <h3>Comments:</h3>

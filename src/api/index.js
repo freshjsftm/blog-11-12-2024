@@ -20,13 +20,18 @@ export const getAllUsers = (options) => {
 
 export const getOneUser = (id) => httpClient.get(`/users/${id}`);
 
-
 // posts
 export const getAllPosts = (options) => {
   const query = queryString.stringify(options);
   return httpClient.get(`/posts?${query}`);
 };
+
 export const getOnePost = (id) => httpClient.get(`/posts/${id}`);
 
 //comments by one post
-export const getAllCommentsByPost = (id) => httpClient.get(`/comments/post/${id}`);
+export const getAllCommentsByPost = (id) =>
+  httpClient.get(`/comments/post/${id}`);
+
+
+// all posts by user id
+export const getAllPostsByUser = (id) => httpClient.get(`/posts/user/${id}`);

@@ -1,5 +1,17 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { getAllPosts, getOnePost, getAllCommentsByPost } from '../api';
+import { getAllPosts, getOnePost, getAllCommentsByPost, getAllPostsByUser } from '../api';
+
+export const getAllPostsByUserAsync = createAsyncThunk(
+  'posts/getAllPostsByUserAsync',
+  async (id, thunkAPI)=>{
+    try {
+      const response = await getAllPostsByUser(id);
+      return response.data.posts;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error?.message || 'Posts not exists');
+    }
+  }
+)
 
 export const getAllPostsAsync = createAsyncThunk(
   'posts/getAllPostsAsync',
@@ -41,6 +53,7 @@ const postsSlice = createSlice({
   name: 'posts',
   initialState: {
     posts: [],
+    postsByUser: [],
     selectedPost: null,
     comments: [],
     error: null,
@@ -48,6 +61,19 @@ const postsSlice = createSlice({
   },
   reducers: {},
   extraReducers: (builder) => {
+    builder.addCase(getAllPostsByUserAsync.pending, (state)=>{
+      state.isPending = true;
+    })
+    builder.addCase(getAllPostsByUserAsync.fulfilled, (state, action)=>{
+      state.isPending = false;
+      state.postsByUser = action.payload;
+    })
+    builder.addCase(getAllPostsByUserAsync.rejected, (state, action)=>{
+      state.isPending = false;
+      state.error = action.payload;
+    })
+
+
     builder.addCase(getAllPostsAsync.pending, (state)=>{
       state.isPending = true;
     })

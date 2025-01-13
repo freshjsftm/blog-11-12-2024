@@ -3,9 +3,9 @@ import HomePage from './pages/HomePage';
 import NotFoundPage from './pages/NotFoundPage';
 import Header from './components/Header/Header';
 import UsersPage from './pages/UsersPage';
-import UserProfile from './components/UserProfile/UserProfile';
 import BlogPage from './pages/BlogPage';
 import PostPage from './pages/PostPage';
+import UserPage from './pages/UserPage';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         
         <Route path="/users" element={<UsersPage />} />
-        <Route path="/users/:userId" element={<UserProfile />} />
+        <Route path="/users/:userId" element={<UserPage />} />
 
         <Route path="/posts" element={<BlogPage />} />
         <Route path="/posts/:postId" element={<PostPage />} />

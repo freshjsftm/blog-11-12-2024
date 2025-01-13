@@ -1,0 +1,18 @@
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post {
+  padding: 0 0.5rem;
+  .avatar {
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+  }
+
+  .post-img {
+    width: 100%;
+  }
+}
