@@ -1,6 +1,9 @@
 @use '/src/common/styles/templates' as *;
+@use '/src/common/styles/breakpoints' as *;
+@use '/src/common/styles/colors' as *;
 
 .full-screen {
+  margin-top: 30px;
   position: absolute;
   z-index: -1;
   width: 100%;
@@ -16,8 +19,9 @@
   @extend %limit-width;
   display: flex;
   padding: 0.5rem;
+  margin-top: 30px;
   img {
-    max-width: 80%;
+    max-width: 50%;
     object-fit: cover;
   }
   h2 {
@@ -26,4 +30,10 @@
   button{
     @extend %btn-read-more;
   }
+   @media screen and (max-width: $m) {
+      flex-direction: column;
+      img{
+        display: none;
+      }
+   }
 }

@@ -3,6 +3,7 @@ import Pagination from '../components/Pagination/Pagination';
 import PostsList from '../components/PostsList/PostsList';
 import CONSTANTS from '../constants';
 import FeaturedPost from '../components/FeaturedPost/FeaturedPost';
+import styles from './pages.module.scss';
 
 const BlogPage = () => {
   const [page, setPage] = useState(1);
@@ -13,7 +14,7 @@ const BlogPage = () => {
       <section>
         <FeaturedPost imgPosition='right'/>
       </section>
-      <div>
+      <div className={styles.wrapper}>
         <h1>Blog</h1>
         {/* with images */}
         <PostsList withPic limit={limitPosts} skip={skip} />

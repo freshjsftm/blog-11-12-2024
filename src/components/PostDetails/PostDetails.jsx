@@ -59,7 +59,8 @@ const PostDetails = () => {
           <img className={styles.avatar} src={avatar} />
           <div>
             <p>
-              {author} ({selectedPost.userId})
+              {author}
+              {/*  ({selectedPost.userId}) */}
             </p>
             <p>views: {selectedPost.views}</p>
           </div>
@@ -74,15 +75,24 @@ const PostDetails = () => {
 
       <h1>{selectedPost.title}</h1>
       <picture>
-        <img className={styles['post-img']} src="/images/1600x1200.png" />
+        <source media="(min-width: 1200px)" srcSet="/images/1600x1200.png" />
+        <source media="(min-width: 992px)" srcSet="/images/1200x800.png" />
+        <source media="(min-width: 576px)" srcSet="/images/600x400.png" />
+        <img
+          src="/images/300x200.png"
+          className={styles['post-img']}
+          alt={selectedPost.title}
+        />
       </picture>
-      <p>{selectedPost.body}</p>
-      <h3>Comments:</h3>
-      {comments.length === 0 ? (
-        <p>empty comments list</p>
-      ) : (
-        <CommentsList comments={comments} />
-      )}
+      <div>
+        <p>{selectedPost.body}</p>
+        <h3>Comments:</h3>
+        {comments.length === 0 ? (
+          <p>empty comments list</p>
+        ) : (
+          <CommentsList comments={comments} />
+        )}
+      </div>
     </article>
   );
 };
