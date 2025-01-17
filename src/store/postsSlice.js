@@ -1,5 +1,29 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { getAllPosts, getOnePost, getAllCommentsByPost, getAllPostsByUser } from '../api';
+import { getAllPosts, getOnePost, getAllCommentsByPost, getAllPostsByUser, getAllTags , getAllPostsByTag } from '../api';
+
+export const getAllPostsByTagAsync = createAsyncThunk(
+  'posts/getAllPostsByTagAsync', 
+  async (tagName, thunkAPI)=>{
+    try {
+      const response = await getAllPostsByTag(tagName);
+      return response.data.posts;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error?.message || 'Posts not exists');
+    }
+  }
+)
+
+export const getAllTagsAsync = createAsyncThunk(
+  'posts/getAllTagsAsync',
+  async (args, thunkAPI)=>{
+    try {
+      const response = await getAllTags();
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error?.message || 'Tegs not exists');
+    }
+  }
+)
 
 export const getAllPostsByUserAsync = createAsyncThunk(
   'posts/getAllPostsByUserAsync',
@@ -54,13 +78,39 @@ const postsSlice = createSlice({
   initialState: {
     posts: [],
     postsByUser: [],
+    // postsByTag:[],
     selectedPost: null,
     comments: [],
+    tags:[],
     error: null,
     isPending: false,
   },
   reducers: {},
   extraReducers: (builder) => {
+
+    builder.addCase(getAllPostsByTagAsync.pending, (state)=>{
+      state.isPending = true;
+    })
+    builder.addCase(getAllPostsByTagAsync.fulfilled, (state, action)=>{
+      state.isPending = false;
+      state.posts = action.payload;
+    })
+    builder.addCase(getAllPostsByTagAsync.rejected, (state, action)=>{
+      state.isPending = false;
+      state.error = action.payload;
+    })
+
+    builder.addCase(getAllTagsAsync.pending, (state)=>{
+      state.isPending = true;
+    })
+    builder.addCase(getAllTagsAsync.fulfilled, (state, action)=>{
+      state.isPending = false;
+      state.tags = action.payload;
+    })
+    builder.addCase(getAllTagsAsync.rejected, (state, action)=>{
+      state.isPending = false;
+      state.error = action.payload;
+    })
     builder.addCase(getAllPostsByUserAsync.pending, (state)=>{
       state.isPending = true;
     })

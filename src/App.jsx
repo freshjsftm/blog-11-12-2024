@@ -6,6 +6,7 @@ import UsersPage from './pages/UsersPage';
 import BlogPage from './pages/BlogPage';
 import PostPage from './pages/PostPage';
 import UserPage from './pages/UserPage';
+import TagPage from './pages/TagPage';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
 
         <Route path="/posts" element={<BlogPage />} />
         <Route path="/posts/:postId" element={<PostPage />} />
+        <Route path="/posts/tag/:tagName" element={<TagPage />} />
 
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

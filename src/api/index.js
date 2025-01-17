@@ -32,6 +32,11 @@ export const getOnePost = (id) => httpClient.get(`/posts/${id}`);
 export const getAllCommentsByPost = (id) =>
   httpClient.get(`/comments/post/${id}`);
 
-
 // all posts by user id
 export const getAllPostsByUser = (id) => httpClient.get(`/posts/user/${id}`);
+
+// all tags
+export const getAllTags = () => httpClient.get('/posts/tag-list');
+
+// all posts by tag
+export const getAllPostsByTag = (tag) => httpClient.get(`/posts/tag/${tag}`);
