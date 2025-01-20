@@ -29,6 +29,13 @@ const PostCard = (props) => {
   const stopPropagation = (event) => {
     event.stopPropagation();
   };
+
+  const showTagLink = (tag) => (
+    <Link className={styles['tag-link']} onClick={stopPropagation} key={tag} to={`/posts/tag/${tag}`}>
+      {tag} 
+    </Link>
+  );
+
   return (
     <article onClick={navigateToPostPage} className={styles['post-card']}>
       {withPic && (
@@ -39,7 +46,7 @@ const PostCard = (props) => {
       )}
       <div>
         {withPic ? (
-          <p>{post.tags.join(' | ')}</p>
+          <p>{post.tags.map(showTagLink)}</p>
         ) : (
           <p>
             By{' '}

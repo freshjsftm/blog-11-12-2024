@@ -7,6 +7,7 @@ import BlogPage from './pages/BlogPage';
 import PostPage from './pages/PostPage';
 import UserPage from './pages/UserPage';
 import TagPage from './pages/TagPage';
+import SearchResultPage from './pages/SearchResultPage';
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
         <Route path="/posts" element={<BlogPage />} />
         <Route path="/posts/:postId" element={<PostPage />} />
         <Route path="/posts/tag/:tagName" element={<TagPage />} />
+
+        <Route path="/posts/search" element={<SearchResultPage />} />
 
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

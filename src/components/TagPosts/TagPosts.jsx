@@ -6,13 +6,13 @@ import { getAllPostsByTagAsync } from '../../store/postsSlice';
 import PostCard from '../PostsList/PostCard';
 
 const TagPosts = (props) => {
-  const { tagName } = props;
+  const { tagName , limit, skip} = props;
   const dispatch = useDispatch();
   const { posts, error, isPending } = useSelector((state) => state.posts);
 
   useEffect(() => {
-    dispatch(getAllPostsByTagAsync(tagName));
-  }, [dispatch, tagName]);
+    dispatch(getAllPostsByTagAsync({tagName, limit, skip}));
+  }, [dispatch, tagName, limit, skip]);
 
   const showPost = (post) => <PostCard post={post} withPic/>;
 
@@ -27,6 +27,8 @@ const TagPosts = (props) => {
 
 TagPosts.propTypes = {
   tagName: PropTypes.string,
+  limit: PropTypes.number,
+  skip: PropTypes.number,
 };
 
 export default TagPosts;

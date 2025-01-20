@@ -1,4 +1,5 @@
 @use '/src/common/styles/templates' as *;
+@use '/src/common/styles/breakpoints' as *;
 
 .relative {
   position: relative;
@@ -21,6 +22,20 @@
     padding: 0 0.5rem;
   }
 }
+.container {
+  display: flex;
+  flex-direction: column;
+  @media screen and (min-width: $m) {
+    flex-direction: row;
+  }
+  section:last-child {
+    margin-left: 20px;
+    @media screen and (min-width: $m) {
+      max-width: 25%;
+    }
+  }
+}
+
 .section-posts {
   display: flex;
   margin-top: 4rem;

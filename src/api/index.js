@@ -39,4 +39,17 @@ export const getAllPostsByUser = (id) => httpClient.get(`/posts/user/${id}`);
 export const getAllTags = () => httpClient.get('/posts/tag-list');
 
 // all posts by tag
-export const getAllPostsByTag = (tag) => httpClient.get(`/posts/tag/${tag}`);
+
+// options = {tagName, limit, skip}
+export const getAllPostsByTag = (options) => {
+  const { tagName, ...restParams } = options;
+  // restParams = { limit:2, skip:4 }
+  const query = queryString.stringify(restParams); // query = 'limit=2&skip=4'
+  return httpClient.get(`/posts/tag/${tagName}?${query}`);
+};
+
+//search
+export const searchPosts = (options) => {
+  const query = queryString.stringify(options);
+  return httpClient.get(`/posts/search?${query}`);
+};
