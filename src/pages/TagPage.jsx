@@ -25,12 +25,7 @@ const TagPage = () => {
         <section>
           <TagPosts tagName={tagName} limit={limitPosts} skip={skip} />
           {total > limitPosts && (
-            <Pagination
-              page={page}
-              setPage={setPage}
-              limit={limitPosts}
-              total={total}
-            />
+            <Pagination page={page} setPage={setPage} limit={limitPosts} total={total} />
           )}
         </section>
         <section>

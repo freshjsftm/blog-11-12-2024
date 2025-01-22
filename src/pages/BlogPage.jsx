@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Pagination from '../components/Pagination/Pagination';
 import PostsList from '../components/PostsList/PostsList';
 import CONSTANTS from '../constants';
@@ -9,6 +10,7 @@ const BlogPage = () => {
   const [page, setPage] = useState(1);
   const limitPosts = CONSTANTS.LIMITS_POSTS.at(2);
   const skip = (page - 1) * limitPosts;
+  const { total } = useSelector((state) => state.posts);
   return (
     <>
       <section>
@@ -16,9 +18,8 @@ const BlogPage = () => {
       </section>
       <div className={styles.wrapper}>
         <h1>Blog</h1>
-        {/* with images */}
         <PostsList withPic limit={limitPosts} skip={skip} />
-        <Pagination page={page} setPage={setPage} />
+        <Pagination page={page} setPage={setPage}  limit={limitPosts} total={total} />
       </div>
     </>
   );
