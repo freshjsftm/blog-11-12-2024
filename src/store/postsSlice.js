@@ -19,7 +19,7 @@ export const getAllPostsByTagAsync = createAsyncThunk(
   async (args, thunkAPI)=>{
     try {
       const response = await getAllPostsByTag(args);
-      return response.data.posts;
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error?.message || 'Posts not exists');
     }
@@ -122,7 +122,8 @@ const postsSlice = createSlice({
     })
     builder.addCase(getAllPostsByTagAsync.fulfilled, (state, action)=>{
       state.isPending = false;
-      state.posts = action.payload;
+      state.posts = action.payload.posts;
+      state.total = action.payload.total;
     })
     builder.addCase(getAllPostsByTagAsync.rejected, (state, action)=>{
       state.isPending = false;
