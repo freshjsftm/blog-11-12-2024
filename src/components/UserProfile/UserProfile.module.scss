@@ -13,6 +13,10 @@
 .user-info {
   display: flex;
   padding: 70px 0;
+  color: $text-light;
+  img{
+    object-fit: cover;
+  }
 }
 
 .bottom-line{

@@ -8,10 +8,11 @@
   padding: 40px;
   margin: 1%;
   background-color: $lightGray;
+  color: $text-light;
   text-align: center;
   cursor: pointer;
   &:hover {
-    background-color: $lightYellow;
+    background-color: $lightYellow;    
   }
   >div>img{
     border-radius: 50%;

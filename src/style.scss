@@ -1,13 +1,5 @@
-$bg-light: #fff;
-$text-light: #111;
-
-$bg-dark: #111;
-$text-dark: #fff;
-
-@mixin theme($bg-color, $text-color) {
-  background-color: $bg-color;
-  color: $text-color;
-}
+@use '/src/common/styles/colors' as *;
+@use '/src/common/styles/mixins' as *;
 
 body {
   &.light {
