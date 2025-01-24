@@ -1,7 +1,12 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Icon from '@mdi/react';
-import { mdiLoginVariant, mdiLogoutVariant } from '@mdi/js';
+import {
+  mdiLoginVariant,
+  mdiLogoutVariant,
+  mdiWhiteBalanceSunny,
+  mdiMoonWaningCrescent,
+} from '@mdi/js';
 import Menu from '../Menu/Menu';
 import Modal from '../Modal/Modal';
 import LoginForm from '../forms/LoginForm';
@@ -10,11 +15,15 @@ import Spinner from '../Spinner/Spinner';
 import { NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
 import SearchForm from '../SearchForm/SearchForm';
+import { ThemeContext } from '../../context/ThemeContext';
+import CONSTANTS from '../../constants';
+const { THEMES } = CONSTANTS;
 
 const Header = () => {
   const { user, error, isPending } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const [isShowModal, setIsShowModal] = useState(false);
+  const { theme, toggleTheme } = useContext(ThemeContext);
   const handleLogin = () => {
     setIsShowModal(true);
   };
@@ -42,9 +51,18 @@ const Header = () => {
         )}
       </div>
       <div className={styles['header-bottom']}>
-        <NavLink className={styles.logo} to='/'>Logo</NavLink>
+        <NavLink className={styles.logo} to="/">
+          Logo
+        </NavLink>
         <Menu />
         <SearchForm />
+        <span onClick={toggleTheme}>
+          {theme === THEMES.LIGHT ? (
+            <Icon size={1} path={mdiWhiteBalanceSunny} />
+          ) : (
+            <Icon size={1} path={mdiMoonWaningCrescent} />
+          )}
+        </span>
       </div>
 
       {isShowModal && (
